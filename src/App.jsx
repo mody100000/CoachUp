@@ -13,6 +13,9 @@ import QuestionsPage2 from './pages/QuestionsPage2/QuestionsPage2';
 import QuestionsPage3 from './pages/QuestionsPage3/QuestionsPage3';
 import CoachesResultPage from './pages/CoachesResultPage/CoachesResultPage';
 import FilteredCoachesResultPage from './pages/FilteredCoachesResultPage/FilteredCoachesResultPage';
+import CoachProfilePage from './pages/CoachProfilePage/CoachProfilePage';
+import CoachProfile from './pages/CoachProfile/CoachProfile';
+
 const routes = createBrowserRouter([
   {
     path: "",
@@ -26,6 +29,8 @@ const routes = createBrowserRouter([
       { path: "questions3", element: <QuestionsPage3 /> },
       { path: "coaches", element: <CoachesResultPage /> },
       { path: '/filtered-coaches', element: <FilteredCoachesResultPage /> },
+      { path: '/coach/:id', element: <CoachProfilePage /> },
+      { path: '/coach/:id', element: <CoachProfile /> },
     ],
   },
 ]);
@@ -36,12 +41,14 @@ function App() {
   useEffect(() => {
     const sampleCoaches = [
       {
+        id: 0,
         name: "John Doe",
         category: "Fitness Coach",
         rating: 5,
         reviews: 120,
         badge: "Gold",
         summary: "Professional trainer, experience with athletes ranging from pro to youth. As a former pro athlete, I understand what it takes to reach your fitness goals. Sports Science degree",
+        location:"LA",
         distance: 6.5,
         salary: 22,
         image: "../public/girl.jpg",
@@ -50,12 +57,14 @@ function App() {
         gender: 'Male'
       },
       {
+        id: 1,
         name: "leo",
         category: "Fitness Coach",
         rating: 4,
         reviews: 100,
         badge: "silver",
         summary: "Professional trainer, experience with athletes ranging from pro to youth. As a former pro athlete, I understand what it takes to reach your fitness goals. Sports Science degree",
+        location:"LA",
         distance: 5.5,
         salary: 80,
         image: "../public/Strength Coach.jpg",
@@ -64,12 +73,14 @@ function App() {
         gender: 'Male'
       },
       {
+        id: 2,
         name: "leo",
         category: "Fitness Coach",
         rating: 4,
         reviews: 100,
         badge: "silver",
         summary: "Professional trainer, experience with athletes ranging from pro to youth. As a former pro athlete, I understand what it takes to reach your fitness goals. Sports Science degree",
+        location:"LA",
         distance: 5.5,
         salary: 110,
         image: "../public/Strength Coach.jpg",
@@ -78,12 +89,14 @@ function App() {
         gender: 'Male'
       },
       {
+        id: 3,
         name: "leo",
         category: "Fitness Coach",
         rating: 4,
         reviews: 100,
         badge: "silver",
         summary: "Professional trainer, experience with athletes ranging from pro to youth. As a former pro athlete, I understand what it takes to reach your fitness goals. Sports Science degree",
+        location:"LA",
         distance: 5.5,
         salary: 60,
         image: "../public/Strength Coach.jpg",
@@ -92,12 +105,14 @@ function App() {
         gender: 'Male'
       },
       {
+        id: 4,
         name: "leo",
         category: "Fitness Coach",
         rating: 4,
         reviews: 100,
         badge: "Gold",
         summary: "Professional trainer, experience with athletes ranging from pro to youth. As a former pro athlete, I understand what it takes to reach your fitness goals. Sports Science degree",
+        location:"LA",
         distance: 5.5,
         salary: 50,
         image: "../public/legGroup.png",
@@ -106,12 +121,14 @@ function App() {
         gender: 'Female'
       },
       {
+        id: 5,
         name: "leo",
         category: "Fitness Coach",
         rating: 4,
         reviews: 100,
         badge: "bronze",
         summary: "Professional trainer, experience with athletes ranging from pro to youth. As a former pro athlete, I understand what it takes to reach your fitness goals. Sports Science degree",
+        location:"LA",
         distance: 5.5,
         salary: 50,
         image: "../public/legGroup.png",
@@ -120,12 +137,14 @@ function App() {
         gender: 'Male'
       },
       {
+        id: 6,
         name: "leo",
         category: "Fitness Coach",
         rating: 4,
         reviews: 100,
         badge: "bronze",
         summary: "Professional trainer, experience with athletes ranging from pro to youth. As a former pro athlete, I understand what it takes to reach your fitness goals. Sports Science degree",
+        location:"LA",
         distance: 5.5,
         salary: 50,
         image: "../public/legGroup.png",
@@ -134,7 +153,7 @@ function App() {
         gender: 'Female'
       },
     ];
-  
+
     dispatch(setCoaches(sampleCoaches));
     dispatch(setSport('Football'));
     dispatch(setAddress('Los Angeles'));

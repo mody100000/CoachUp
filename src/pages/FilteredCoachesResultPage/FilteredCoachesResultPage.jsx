@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import styles from './FilteredCoachesResultPage.module.css';
 import coachImage from '../../assets/s3.jpg';
@@ -136,22 +136,27 @@ const FilteredCoachesResultPage = () => {
         </div>
       </div>
       <div className={styles.coachesContainer}>
-        {currentCoaches.map((coach, index) => (
-          <div key={index} className={`${styles.coachCard} ${coach.recommended ? styles.recommended : ''}`}>
-            <img src={coach.image || coachImage} alt={coach.name} className={styles.coachImage} />
-            <h2 className={styles.coachName}>{coach.name}</h2>
-            <p className={styles.coachCategory}>{coach.category}</p>
-            <div className={styles.rating}>
-              <span className={styles.stars}>{'★'.repeat(coach.rating)}{'☆'.repeat(5 - coach.rating)}</span>
-              <span className={styles.reviews}>{coach.reviews} reviews</span>
+        {currentCoaches.length > 0 ? (
+          currentCoaches.map((coach) => (
+            <div key={coach.id} className={`${styles.coachCard} ${coach.recommended ? styles.recommended : ''}`}>
+              <img src={coach.image || coachImage} alt={coach.name} className={styles.coachImage} />
+              <h2 className={styles.coachName}>{coach.name}</h2>
+              <p className={styles.recommendedText}>{coach.recommended?"recommended":null}</p>
+              <p className={styles.coachCategory}>{coach.category}</p>
+              <div className={styles.rating}>
+                <span className={styles.stars}>{'★'.repeat(coach.rating)}{'☆'.repeat(5 - coach.rating)}</span>
+                <span className={styles.reviews}>{coach.reviews} reviews</span>
+              </div>
+              <span className={`${styles.badge} ${getBadgeClass(coach.badge)}`}>{coach.badge}</span>
+              <p className={styles.summary}>{coach.summary}</p>
+              <p className={styles.distance}>{coach.distance} miles away from {address}</p>
+              <p className={styles.salary}>${coach.salary}/session</p>
+              <Link to={`/coach/${coach.id}`} className={styles.viewProfileButton}>View Profile</Link>
             </div>
-            <span className={`${styles.badge} ${getBadgeClass(coach.badge)}`}>{coach.badge}</span>
-            <p className={styles.summary}>{coach.summary}</p>
-            <p className={styles.distance}>{coach.distance} miles away from {address}</p>
-            <p className={styles.salary}>${coach.salary}/session</p>
-            <button className={styles.viewProfileButton}>View Profile</button>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p className={styles.noResults}>No coaches found matching your criteria.</p>
+        )}
       </div>
       <div className={styles.pagination}>
         {renderPagination()}

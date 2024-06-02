@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import styles from './CoachesResultPage.module.css';
 import coachImage from '../../assets/s3.jpg'; // Placeholder image, replace with actual image source
 
@@ -58,8 +59,8 @@ const CoachesResultPage = () => {
         <h1 className={styles.title}>Recommended {sport} coaches near {address}</h1>
       </div>
       <div className={styles.coachesContainer}>
-        {currentCoaches.map((coach, index) => (
-          <div key={index} className={styles.coachCard}>
+        {currentCoaches.map((coach) => (
+          <div key={coach.id} className={styles.coachCard}>
             <img src={coach.image || coachImage} alt={coach.name} className={styles.coachImage} />
             <h2 className={styles.coachName}>{coach.name}</h2>
             <p className={styles.coachCategory}>{coach.category}</p>
@@ -71,7 +72,9 @@ const CoachesResultPage = () => {
             <p className={styles.summary}>{coach.summary}</p>
             <p className={styles.distance}>{coach.distance} miles away from {address}</p>
             <p className={styles.salary}>${coach.salary}/session</p>
-            <button className={styles.viewProfileButton}>View Profile</button>
+            <Link to={`/coach/${coach.id}`} className={styles.viewProfileLink}>
+              <button className={styles.viewProfileButton}>View Profile</button>
+            </Link>
           </div>
         ))}
       </div>

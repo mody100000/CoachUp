@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./Footer.module.css";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import logo from "../../assets/logo.png";
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -8,7 +10,9 @@ const Footer = () => {
       <span className={styles.line}></span>
       <footer className={styles.footer}>
         <div className={styles.footerSection}>
-          <h1 className={styles.logo}>XFACTOR</h1>
+        <Link to="/" className={styles.brand}>
+            <img src={logo} className={styles.logo} alt="XFACTOR" />
+          </Link>
         </div>
         <div className={styles.footerSection}>
           <h2 className={styles.sectionTitle}>My Account</h2>

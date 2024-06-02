@@ -9,6 +9,50 @@ body {
   margin: 0 auto;
   padding: 20px;
 }
+.recommendedText{
+  font-style:italic ;
+font-size: 1rem;
+color: gray;
+text-align: center;
+}
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  
+}
+
+.filters {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  background-color: #e9ecef;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.filters label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  color: #495057;
+}
+
+.filterSelect {
+  margin-top: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  background-color: #fff;
+  cursor: pointer;
+}
 
 .coachesContainer {
   display: grid;
@@ -33,6 +77,7 @@ body {
 .coachName {
   font-size: 1.2rem;
   margin-top: 10px;
+  text-align: center;
 }
 
 .coachCategory {
@@ -95,9 +140,11 @@ body {
   justify-content: center;
   margin-top: 20px;
 }
+
 .coachCard.recommended {
   background-color: #e6ffe6;
 }
+
 .silverBadge {
   background-color: #c0c0c0;
 }
@@ -109,6 +156,7 @@ body {
 .defaultBadge {
   background-color: #888;
 }
+
 .paginationButton {
   padding: 5px 10px;
   margin: 0 5px;
@@ -117,9 +165,7 @@ body {
   border-radius: 5px;
   cursor: pointer;
 }
-.filters{
-  margin: 1rem;
-}
+
 .paginationButton.active {
   background-color: #007bff;
   color: white;
@@ -129,6 +175,7 @@ body {
   .coachesContainer {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
+
   .coachCard {
     padding: 10px;
   }
@@ -154,4 +201,11 @@ body {
   .viewProfileButton {
     font-size: 0.8rem;
   }
+}
+
+.noResults {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #6c757d;
+  margin-top: 20px;
 }

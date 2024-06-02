@@ -31,6 +31,32 @@
   object-fit: contain;
 }
 
+@media (max-width: 1024px) { 
+  .container {
+    padding: 0 1rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .imagesContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .imageWrapper {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .image {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+  }
+}
+
 @media (max-width: 768px) {
   .title {
     font-size: 2rem;
